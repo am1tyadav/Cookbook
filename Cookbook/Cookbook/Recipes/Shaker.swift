@@ -66,7 +66,9 @@ class ShakerConductor: ObservableObject {
 
 
         callbackInst = CallbackInstrument(midiCallback: { (_, beat, _) in
-            self.data.currentBeat = Int(beat)
+            DispatchQueue.main.async {
+                self.data.currentBeat = Int(beat)
+            }
             print(beat)
         })
 
